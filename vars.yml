@@ -25,3 +25,5 @@ flynn_interfaces:
   - veth*
 
 flynn_tcp_port_range: 3000:3500
+
+timezone: America/Chicago

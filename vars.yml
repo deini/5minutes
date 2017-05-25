@@ -24,5 +24,4 @@ flynn_interfaces:
   - flannel.1
   - veth*
 
-flynn_tcp_from_port: 3000
-flynn_tcp_to_port: 3500
+flynn_tcp_port_range: 3000:3500

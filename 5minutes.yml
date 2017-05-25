@@ -64,26 +64,15 @@
       ufw:
         rule: allow
         proto: tcp
-        from_port: 3000
-        to_port: 3500
+        from_port: {{ flynn_tcp_from_port }}
+        to_port: {{ flynn_tcp_to_port }}
 
-    - name: Allow interface for Flynn (flynnbr0)
+    - name: UFW allow Flynn interfaces
       ufw:
         rule: allow
-        interface: flynnbr0
+        interface: '{{ item }}'
         direction: in
-
-    - name: Allow interface for Flynn (flannel.1)
-      ufw:
-        rule: allow
-        interface: flannel.1
-        direction: in
-
-    - name: Allow interface for Flynn (veth*)
-      ufw:
-        rule: allow
-        interface: veth*
-        direction: in
+      with_items: '{{ flynn_interfaces }}'
 
     # Needed for docker/flynn
     - name: Set ufw default forward policy to ACCEPT

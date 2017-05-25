@@ -9,7 +9,6 @@ user_public_keys:
   - ~/.ssh/id_rsa.pub
 
 required_packages:
-  - python
   - ufw
   - fail2ban
   - unattended-upgrades
@@ -19,3 +18,11 @@ ufw_allowed_ports:
   - 22
   - 80
   - 443
+
+flynn_interfaces:
+  - flynnbr0
+  - flannel.1
+  - veth*
+
+flynn_tcp_from_port: 3000
+flynn_tcp_to_port: 3500

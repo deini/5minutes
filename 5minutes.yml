@@ -1,7 +1,6 @@
 ---
 - name: First 5 minutes in new servers
   hosts: webservers
-  gather_facts: False
   become: yes
   become_user: root
   vars_files:
@@ -55,7 +54,7 @@
     - name: Allow ssh and http(s) connections
       ufw:
         rule: allow
-        port: {{ item }}
+        port: '{{ item }}'
       with_items:
         - '{{ ufw_allowed_ports }}'
 
@@ -64,8 +63,7 @@
       ufw:
         rule: allow
         proto: tcp
-        from_port: {{ flynn_tcp_from_port }}
-        to_port: {{ flynn_tcp_to_port }}
+        port: '{{ flynn_tcp_port_range }}'
 
     - name: UFW allow Flynn interfaces
       ufw:

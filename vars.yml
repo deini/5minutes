@@ -10,6 +10,7 @@ logwatch_email: danielalmaguer@gmail.com
 # Glob list for ssh keys
 user_public_keys:
   - ~/.ssh/id_rsa.pub
+#  - ~/dev/deini/ssh-authorized-keys/*.pub
 
 required_packages:
   - ufw
@@ -21,12 +22,5 @@ ufw_allowed_ports:
   - 22
   - 80
   - 443
-
-flynn_interfaces:
-  - flynnbr0
-  - flannel.1
-  - veth*
-
-flynn_tcp_port_range: 3000:3500
 
 timezone: America/Chicago

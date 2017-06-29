@@ -58,20 +58,6 @@
       with_items:
         - '{{ ufw_allowed_ports }}'
 
-    # Flynn ports
-    - name: Allow port range for flynn tcp
-      ufw:
-        rule: allow
-        proto: tcp
-        port: '{{ flynn_tcp_port_range }}'
-
-    - name: UFW allow Flynn interfaces
-      ufw:
-        rule: allow
-        interface: '{{ item }}'
-        direction: in
-      with_items: '{{ flynn_interfaces }}'
-
     # Needed for docker/flynn
     - name: Set ufw default forward policy to ACCEPT
       lineinfile:
